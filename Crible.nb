@@ -1,0 +1,1130 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     47345,       1122]
+NotebookOptionsPosition[     44818,       1052]
+NotebookOutlinePosition[     45566,       1077]
+CellTagsIndexPosition[     45523,       1074]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[TextData[StyleBox["Le crible de Matiiassevitch",
+ FontFamily->"Gill Sans MT"]], "Title",
+ CellChangeTimes->{{3.458540724944786*^9, 3.458540729494195*^9}, 
+   3.458541673620789*^9, 3.459344021857354*^9, {3.46044268954821*^9, 
+   3.46044271657098*^9}, 3.529646671379498*^9, 
+   3.7111929422603564`*^9},ExpressionUUID->"c9856f02-b49c-4416-a4e4-\
+77b6193dd68b"],
+
+Cell["UPEC, Paris.", "Subtitle",
+ CellChangeTimes->{
+  3.459339739590531*^9, {3.460442720779677*^9, 3.460442730810349*^9}, {
+   3.463935730910805*^9, 3.46393573188248*^9}, {3.463935815690781*^9, 
+   3.463935838350978*^9}, {3.7111898782630615`*^9, 
+   3.711189878357074*^9}},ExpressionUUID->"cd5d16c5-305e-40fe-8093-\
+0b8e3078a802"],
+
+Cell["Guillaume Sa\[EDoubleDot]s (guillaume.saes@u-pec.fr)", "Subsubtitle",
+ CellChangeTimes->{
+  3.459339739590531*^9, {3.460442720779677*^9, 3.460442730810349*^9}, {
+   3.463935730910805*^9, 3.463935750091999*^9}, {3.46393579332872*^9, 
+   3.463935886453575*^9}, {3.463938029053257*^9, 3.463938029943051*^9}, {
+   3.7111898849124193`*^9, 
+   3.711189899519804*^9}},ExpressionUUID->"4ef30785-a291-4a70-a8c7-\
+de485952b571"],
+
+Cell[CellGroupData[{
+
+Cell["\[CapitalEAcute]nonc\[EAcute]", "Section",
+ CellChangeTimes->{
+  3.458540764853705*^9, {3.458540796841171*^9, 3.458540799600106*^9}, {
+   3.45854158852623*^9, 3.458541595065651*^9}, {3.711192962586993*^9, 
+   3.7111929779434743`*^9}},ExpressionUUID->"825b9d74-7d01-4e3f-b1f4-\
+13fe985a8c1d"],
+
+Cell["\<\
+C\[CloseCurlyQuote]est un exercice de programmation et \
+d\[CloseCurlyQuote]observation math\[EAcute]matiques.
+Vous devez \[EHat]tre autonome et savoir utiliser l\[CloseCurlyQuote]aide \
+Mathematica afin de r\[EAcute]ussir.\
+\>", "Text",
+ CellChangeTimes->CompressedData["
+1:eJwdx0sowwEAx/G1tqQltFJqhE0c1BJtUpv9SysHtla01BS22vLcgcNcXIyp
+xWE2FP7WPFJ2WJZZ8gpbW5bJKwd5jPWfGCkpz/3+h2+fvoVtPSodk8Fg8FJB
+hUtPuvYpYlyqnIe7f8sZCynPVQWZ0CuT50AtV0VLyor48EMgqoJBS8PMzwFF
+sCRVs7DPXeGCorh0Ac41Pnig6bnJB4dkW9vQwGk/hOw94wm0Kew38GVCUPqb
+0trloQ1OmstgwmOrpl8sqYGOkJn21d5aC923x3WQbfLXw8hGmNZx8dgMV4sb
+W6FGbNBDeTKtFy62RPvh2qVzGO6Q6jBcErwewZWz9Gs4/RWIQ7869A3XLVe0
+8kqjcCpAEWOd9nKou/NFXiIUIYxu0zJJE+89RhFZ3M08mC1i8eFnaXcNbB84
+1XA4CcIrV3bAXKu7F2ola4Mwps63jCw+EU6yaRTel/DeLSmTvrcP+A/vkgmZ
+
+  "],
+ TextJustification->1,ExpressionUUID->"2ddc9d41-aa5c-4d5d-b452-4668068597fc"],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+1. Illustrer la parabole de la fonction carr\[EAcute]e sur un graphique\
+\>", "Subsection",
+ CellChangeTimes->{{3.458540803270057*^9, 3.458540810507637*^9}, {
+  3.45854164626714*^9, 3.458541670430628*^9}, {3.459249373008482*^9, 
+  3.459249375207695*^9}, {3.7111900339536114`*^9, 3.7111900364889383`*^9}, {
+  3.7111930426613417`*^9, 
+  3.711193070315052*^9}},ExpressionUUID->"b3ddc8b6-cfdd-4d24-ae28-\
+f171db046d27"],
+
+Cell["On pourra utiliser la fonction \[OpenCurlyDoubleQuote]Plot\
+\[CloseCurlyDoubleQuote] vu pr\[EAcute]c\[EAcute]demment.", "Text",
+ CellChangeTimes->{{3.458540803270057*^9, 3.458540810507637*^9}, {
+   3.45854167728122*^9, 3.458541689010112*^9}, {3.458541746195399*^9, 
+   3.458541746564867*^9}, {3.458541849070389*^9, 3.458542017692012*^9}, {
+   3.459247338454319*^9, 3.459247345757448*^9}, {3.459247393615046*^9, 
+   3.459247401965724*^9}, {3.459247511166702*^9, 3.459247554716489*^9}, {
+   3.459247613945376*^9, 3.459247667095143*^9}, {3.459247763554934*^9, 
+   3.459247876697214*^9}, {3.459248449143302*^9, 3.459248453575873*^9}, {
+   3.45924848420615*^9, 3.45924859664684*^9}, {3.459248633913059*^9, 
+   3.45924863621223*^9}, {3.459248675049675*^9, 3.459248718527549*^9}, {
+   3.459248749827395*^9, 3.459248750366431*^9}, {3.459248855213817*^9, 
+   3.459248906660849*^9}, {3.459248963288008*^9, 3.459249024247958*^9}, {
+   3.459249078542804*^9, 3.459249213088953*^9}, {3.459250124636343*^9, 
+   3.459250126267667*^9}, 3.459331526604713*^9, {3.460287599825466*^9, 
+   3.460287750201888*^9}, {3.711189948800809*^9, 3.7111899665891037`*^9}, 
+   3.7111900031351357`*^9, {3.7111930776855087`*^9, 3.711193084521885*^9}},
+ TextJustification->1,ExpressionUUID->"b5f1490e-53f5-4bfc-8ecf-55cf7f0f76db"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+2. Placer les points de coordonn\[EAcute]es enti\[EGrave]res sur la parabole \
+entre -5 et 5
+(Par exemple : (-2,4) ou (5,25))\
+\>", "Subsection",
+ CellChangeTimes->{{3.458540803270057*^9, 3.458540810507637*^9}, {
+  3.45854164626714*^9, 3.458541670430628*^9}, {3.459249373008482*^9, 
+  3.459249375207695*^9}, {3.7111900339536114`*^9, 3.7111900364889383`*^9}, {
+  3.7111930875062695`*^9, 
+  3.711193119878654*^9}},ExpressionUUID->"44ec943c-544b-4d5a-a8e7-\
+10666b8a473a"],
+
+Cell["\<\
+On pourra s\[CloseCurlyQuote]aider de la fonction \
+\[OpenCurlyDoubleQuote]Point\[CloseCurlyDoubleQuote] et \
+\[OpenCurlyDoubleQuote]Table\[CloseCurlyDoubleQuote].
+Aidez-vous de l\[CloseCurlyQuote]aide Mathematica qui affiche ceci dans ses \
+applications :
+Plot[Sin[x],{x,0,5Pi},Epilog\[Rule]{PointSize[Medium],Point[Table[{k \
+Pi,0},{k,0,5}]]}]\
+\>", "Text",
+ CellChangeTimes->{{3.458540803270057*^9, 3.458540810507637*^9}, {
+   3.45854167728122*^9, 3.458541689010112*^9}, {3.458541746195399*^9, 
+   3.458541746564867*^9}, {3.458541849070389*^9, 3.458542017692012*^9}, {
+   3.459247338454319*^9, 3.459247345757448*^9}, {3.459247393615046*^9, 
+   3.459247401965724*^9}, {3.459247511166702*^9, 3.459247554716489*^9}, {
+   3.459247613945376*^9, 3.459247667095143*^9}, {3.459247763554934*^9, 
+   3.459247876697214*^9}, {3.459248449143302*^9, 3.459248453575873*^9}, {
+   3.45924848420615*^9, 3.45924859664684*^9}, {3.459248633913059*^9, 
+   3.45924863621223*^9}, {3.459248675049675*^9, 3.459248718527549*^9}, {
+   3.459248749827395*^9, 3.459248750366431*^9}, {3.459248855213817*^9, 
+   3.459248906660849*^9}, {3.459248963288008*^9, 3.459249024247958*^9}, {
+   3.459249078542804*^9, 3.459249213088953*^9}, {3.459249754769623*^9, 
+   3.459249775504474*^9}, {3.459249904307332*^9, 3.459249982249463*^9}, {
+   3.459250150323331*^9, 3.459250150829311*^9}, {3.460090235537631*^9, 
+   3.460090252700752*^9}, {3.463935605777636*^9, 3.463935605994285*^9}, {
+   3.475478755832032*^9, 3.475478765877327*^9}, {3.4754788081316*^9, 
+   3.475479035442501*^9}, {3.495451374640062*^9, 3.495451482508631*^9}, {
+   3.495451525454724*^9, 3.495451653632494*^9}, {3.711190088948351*^9, 
+   3.7111900987071085`*^9}, 3.711193130444516*^9},
+ TextJustification->1,ExpressionUUID->"afaae3a9-fd05-4e21-8f7b-3159c6f10498"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+3. Tracer les segments coupant l\[CloseCurlyQuote]axe des ordonn\[EAcute]es \
+passant par les points plac\[EAcute]s sur la parabole en excluant les points \
+(-1,1), (1,1) et (0,0).\
+\>", "Subsection",
+ CellChangeTimes->{{3.458540803270057*^9, 3.458540810507637*^9}, {
+  3.45854164626714*^9, 3.458541670430628*^9}, {3.459249373008482*^9, 
+  3.459249375207695*^9}, {3.7111900339536114`*^9, 3.7111900364889383`*^9}, {
+  3.7111930875062695`*^9, 3.711193119878654*^9}, {3.7111931754054594`*^9, 
+  3.711193230036289*^9}},ExpressionUUID->"e00f2ced-fb6c-447a-9bf1-\
+674deed37756"],
+
+Cell["On peut s\[CloseCurlyQuote]aider de la commande \
+\[OpenCurlyDoubleQuote]Line\[CloseCurlyDoubleQuote]", "Text",
+ CellChangeTimes->{{3.458540803270057*^9, 3.458540810507637*^9}, {
+   3.45854167728122*^9, 3.458541689010112*^9}, {3.458541746195399*^9, 
+   3.458541746564867*^9}, {3.458541849070389*^9, 3.458542017692012*^9}, {
+   3.459247338454319*^9, 3.459247345757448*^9}, {3.459247393615046*^9, 
+   3.459247401965724*^9}, {3.459247511166702*^9, 3.459247554716489*^9}, {
+   3.459247613945376*^9, 3.459247667095143*^9}, {3.459247763554934*^9, 
+   3.459247876697214*^9}, {3.459248449143302*^9, 3.459248453575873*^9}, {
+   3.45924848420615*^9, 3.45924859664684*^9}, {3.459248633913059*^9, 
+   3.45924863621223*^9}, {3.459248675049675*^9, 3.459248718527549*^9}, {
+   3.459248749827395*^9, 3.459248750366431*^9}, {3.459248855213817*^9, 
+   3.459248906660849*^9}, {3.459248963288008*^9, 3.459249024247958*^9}, {
+   3.459249078542804*^9, 3.459249213088953*^9}, {3.459249754769623*^9, 
+   3.459249775504474*^9}, {3.459249904307332*^9, 3.459249982249463*^9}, {
+   3.459250150323331*^9, 3.459250150829311*^9}, {3.460090235537631*^9, 
+   3.460090252700752*^9}, {3.463935605777636*^9, 3.463935605994285*^9}, {
+   3.475478755832032*^9, 3.475478765877327*^9}, {3.4754788081316*^9, 
+   3.475479035442501*^9}, {3.495451374640062*^9, 3.495451482508631*^9}, {
+   3.495451525454724*^9, 3.495451653632494*^9}, {3.711190088948351*^9, 
+   3.7111900987071085`*^9}, 3.711193130444516*^9, 3.711193245610303*^9},
+ TextJustification->1,ExpressionUUID->"6423d8b5-a65c-45c5-9aad-9a11c0d6b6aa"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["4. Emm\[EGrave]tre une conjecture", "Subsection",
+ CellChangeTimes->{{3.458540803270057*^9, 3.458540810507637*^9}, {
+  3.45854164626714*^9, 3.458541670430628*^9}, {3.459249373008482*^9, 
+  3.459249375207695*^9}, {3.7111900339536114`*^9, 3.7111900364889383`*^9}, {
+  3.7111930875062695`*^9, 3.711193119878654*^9}, {3.7111932495188026`*^9, 
+  3.711193264005171*^9}},ExpressionUUID->"163cefc4-dc63-4099-be37-\
+7caaa36c97bb"],
+
+Cell["N\[CloseCurlyQuote]h\[EAcute]sitez pas \[AGrave] changer \[AGrave] \
+augmenter le nombre de segment.", "Text",
+ CellChangeTimes->{{3.458540803270057*^9, 3.458540810507637*^9}, {
+   3.45854167728122*^9, 3.458541689010112*^9}, {3.458541746195399*^9, 
+   3.458541746564867*^9}, {3.458541849070389*^9, 3.458542017692012*^9}, {
+   3.459247338454319*^9, 3.459247345757448*^9}, {3.459247393615046*^9, 
+   3.459247401965724*^9}, {3.459247511166702*^9, 3.459247554716489*^9}, {
+   3.459247613945376*^9, 3.459247667095143*^9}, {3.459247763554934*^9, 
+   3.459247876697214*^9}, {3.459248449143302*^9, 3.459248453575873*^9}, {
+   3.45924848420615*^9, 3.45924859664684*^9}, {3.459248633913059*^9, 
+   3.45924863621223*^9}, {3.459248675049675*^9, 3.459248718527549*^9}, {
+   3.459248749827395*^9, 3.459248750366431*^9}, {3.459248855213817*^9, 
+   3.459248906660849*^9}, {3.459248963288008*^9, 3.459249024247958*^9}, {
+   3.459249078542804*^9, 3.459249213088953*^9}, {3.459249754769623*^9, 
+   3.459249775504474*^9}, {3.459249904307332*^9, 3.459249982249463*^9}, {
+   3.459250150323331*^9, 3.459250150829311*^9}, {3.460090235537631*^9, 
+   3.460090252700752*^9}, {3.463935605777636*^9, 3.463935605994285*^9}, {
+   3.475478755832032*^9, 3.475478765877327*^9}, {3.4754788081316*^9, 
+   3.475479035442501*^9}, {3.495451374640062*^9, 3.495451482508631*^9}, {
+   3.495451525454724*^9, 3.495451653632494*^9}, {3.711190088948351*^9, 
+   3.7111900987071085`*^9}, 3.711193130444516*^9, 3.711193260906771*^9},
+ TextJustification->1,ExpressionUUID->"88f9d581-d410-480a-bbbf-37d978458550"]
+}, Closed]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Solution", "Section",
+ CellChangeTimes->{
+  3.458540764853705*^9, {3.458540796841171*^9, 3.458540799600106*^9}, {
+   3.458542140771091*^9, 3.458542157841792*^9}, {3.459251019360778*^9, 
+   3.459251021011405*^9}, {3.459345261530406*^9, 3.459345271468207*^9}, {
+   3.7111932743301563`*^9, 
+   3.7111932782666583`*^9}},ExpressionUUID->"404cf756-40f0-4beb-82da-\
+d8018f087ef7"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"n", "=", "25"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"f", "[", "x_", "]"}], ":=", 
+   RowBox[{"x", "^", "2"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"P", "=", 
+   RowBox[{"Point", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"k", ",", 
+        RowBox[{"k", "^", "2"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", 
+        RowBox[{"-", "n"}], ",", "n"}], "}"}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"L", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Line", "[", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"i", ",", 
+          RowBox[{"i", "^", "2"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"j", ",", 
+          RowBox[{"j", "^", "2"}]}], "}"}]}], "}"}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"i", ",", 
+       RowBox[{"-", "n"}], ",", 
+       RowBox[{"-", "2"}]}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"j", ",", "2", ",", "n"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"R", "=", 
+   RowBox[{"Point", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", 
+        RowBox[{"Prime", "[", "k", "]"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "1", ",", "n"}], "}"}]}], "]"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Plot", "[", 
+  RowBox[{
+   RowBox[{"f", "[", "x", "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"x", ",", 
+     RowBox[{"-", 
+      RowBox[{"Sqrt", "[", "n", "]"}]}], ",", 
+     RowBox[{"Sqrt", "[", "n", "]"}]}], "}"}], ",", 
+   RowBox[{"Epilog", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"P", ",", "L", ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"PointSize", "[", "Large", "]"}], ",", "Red", ",", "R"}], 
+       "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"PointSize", "[", "Large", "]"}], ",", "Red", ",", 
+        RowBox[{"Point", "[", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "1"}], "}"}], "]"}]}], "}"}]}], "}"}]}]}], 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.711193282165662*^9, 
+  3.711193287141303*^9}},ExpressionUUID->"948ef1e6-a65e-4006-ad4d-\
+6dfe8d2a9270"],
+
+Cell[BoxData[
+ GraphicsBox[{{{}, {}, 
+    TagBox[
+     {RGBColor[0.368417, 0.506779, 0.709798], AbsoluteThickness[1.6], Opacity[
+      1.], LineBox[CompressedData["
+1:eJw1mHc0Fn7YxpHsrEeFoiRShMwnqfsrScqIpEHDjAaFkFXZIsmeyYiQkVX8
+5PvgQSh7hjzZez+2vL3nvO9f97n/uc513X/c53MuIRMbPXM6Ghoabloamv+d
+bqNaC9vbBBK5oqJve5uIRlz2UHs2CSQ799ceoqtEpM3Zv/JljUBKZlk10Z4j
+ooMnH2/ZLBJIkWGfOhIpRFTxKoSJMkIgZVuH+l8rJyImyU5B0k8CqejUdYG/
+HkQUZn/30otYAkngZNmmIiMRZdLapdAoEkjK5RsxtwmKaKe5ugzfLW7SdoO0
+RQRBHhG6qh4mveUiJdT5fUu9KIv0KmNMj9ZxkrRi8/drvTuBXGZPPwwe5CDp
+uKsKKNVIoa+OMfdzdNhJ3iHlV6WKJJB2yNWDf6PZSJjwuto4+ChSj/+mfWGK
+heQ8e1C8OlUUpdY867AzZCaV2oQbTuw9jG57he1u/MhIosqlyBx2F0Lud3dk
+sxIYSMy8OnUO9oKI5vgBrOpNTzKSVrj6XJcf/QqI9s1spyNVFZ+9Myq+B+1n
+sUxfOktLKhrm4LubwI0eyB/b2bN/G3NQRO7QIXZkqvj7Y2XlBta4d7qOcS8T
+OuaktG2dsorlGjhtF9foUGLfFfIzFSreRWcQNqm8CTJDMuttclRs1CnjdWvf
+JpAnuKSlxai4zSPXZnBtA0ZWGmNH2KlYwSjopPiXDTjGrWl3pXcJN/O2RWXI
+bEDe+XOHjjsuYZNiX2/L4+tAzpF7Qfm0iDci3+z9c2IVRl/uVlbnXcAzdUKC
+VQ5LwOKWMxvKsoAXzgd1t15bAkknjWTK5jxWDDRnXScugYO1G4vzn3nsZqvf
+ErixCAyGw12fMubxepbsdP3LRTgsV/iU+/Q8LqCsGOSGLIDJiH5On/EcJspH
+rnNVz4HPnxmTY/pzeE+3kSdHxhxk9PrtcTw/h2XOv/Y4HDQHCy2lbpzic1jM
+VXIozGAO6J5rRPmMzWK67CFLweZZgBPjzbq7ZvFc8DZXm9AMlISLqY0ZTOMx
+OVP6JyMTwGQ4akqrPI1ZmC6yyBZOgMHBVA9+oWmc5Bt86ZDXBCxkCJM0J6fw
+iUDlF36HJuAoSfDU5+dTuCGDM8/OeByiJnhOOH+cxKxn0hWrRkfhKdAKsK2P
+Y4/S2Dr9PcNQQU86JdI/jrUEnZTLJoaAs8795hnyOH4jUTCuj4fgk/5m5OOg
+cWyvfWmZ2WoIhqxWuNsPjeOyNGpnSNkg6IVNM727NIZ1cpW+HbAdAOnx7iWp
++BE8JsN2QHO5H+znjh/d6zWCd+n5Snnk9MPXlZe3/t4fwVpnLmwwWPWDCsOx
+6h/EEXzYPZa82fsb9ISdI63ahvH+WF/B6O998PQWv1Iy6zBGFx1mw7J7oKT5
+5vM9zoP4glvWzujCTvjblZ2/dXcQD8KAe6pTJ5yl0I0NqQ/i6EajfDrlTqif
+ybicv3sQGxkIa6dVdkAv64bQ5c8DWIJ2+WJiRztsq8WS/cf+4O36z8bXWdvg
+XEkP85YBBZsreO5ozWmC7IwPJ2tOUfCsiFrdI6cm4I21sXp7kIJvumcLmKs0
+QccKQ8iltn4c3zrT1vKxEURcDDjj139jDwOy4tutn1DxksqG1PuwS65CaUVt
+HUSY+D9s4+zDCZlpv/0t6sBKVeCH5a9e7OF0j5+Fvg44d6oFvH3Ui4N8W/vk
+VWrhjl8Y82BoD853vhWmRK6BzSBZBh9KNz5eSCStTpGhyabGnD+jGxv/iHDU
+DSdD8mXDqmy7bqxfqHrB9AwZLnJ7enUydOMXm/7yeSGVEB3eQnf0eBceufMd
+tlQrQCHuyXb9sw5MovKKBodgeJyes8pFaMXiO8ysjL8VgTS7tedZSgveOiox
+23uuCOZtJdjtslpwQv8J8difhWCrnC7cpt6CtVaoVf0DBfC0MUk7wrUZX+u6
+6+O/Px8WJ8Q15H80YtkKD/OyqBywL/h4O8KiEX8YJxPZmrJh2U3EfoWmERdK
+ejj1M2fDKueBhGL5BvyRy/r0Hu9PsKnATT2d8AOPKLH2kaPTgcFz9f1521r8
+nd/QTlQ5BXw1nxalsdXinft12Otjk4Fpz0I9U9p33K9Utpu6lQQs6ZPLdT01
+2Kp51/3u2kTgaPytqaNWjbMqhy5Xb7+D4ChDk9z+KryQ4K5tMRoP3CZdjlzO
+Vdj+C7sIV1sc8FCbk1qzyfhAFNct39IY4N1XtXqNtxKLHkxapdZGQPSQCntx
+XgVW7Jj+NtUdDvzZZcL8WhXYo0bKaGYmDARUvmr3vizH1YYRwtxioaDaYKBR
+3oHxanjvf1+y3sB548v2nqwY5xd2tusJBsGFJY0ENVSGKZdw4o7oQNDkP02t
+TS/FIT1XdFI/+YOBhXBii2sxNvILoZ3T9IJXT+z8Qgq/4rTKRU4THk/45lpp
+ozfzBT/v+++B9/BLOBxqeqblThHGN2gZSRrP4fq7fJGQqELcQF5/ISnqBgHp
+O3bpNRfgtanyt9u7XWABJ/c0n83HmfbFjrVSjiBav1jx1iUPy7aNa1bceAo3
+OlQzdAs+48650a8CkXZAmhp0ahbJxS7GWlc3Lz2Gsdl7pEPfsvHKfSvWbZ9H
+oMPA9CZJMgvLvG6Nrou7D4KyFySSuDLwHeQMn5XNwVtjbF3I8yO+3Fxk8KPa
+BKbu+NUmLqVit96g2E+Od+GKg1iUkMUH/KOSfn/KOyMoCfxukdiZjHkrDxk9
+i70OQsmW8kIaSbivyHGla1gf/IqZ6BNL3mP+hB0zFW668DtB94PK9Xc4cSXw
+uXW1JmT9eHtW5VQspo150f1AQh1c1pr7kWAU1hMZGHc7fhY0RLndEG04PiJr
+aqwRegr2XtHjR0Nv8ZvpPkMSrRzUbx+2eR70GhctWvqUa4qD5Y0P6e76vpgn
+96fkVTohoM8XGXLjf4mfHGwzdrzADYhP8/Q66Snelzhn/jF068xcVLTZfLQJ
+LnRW1BB7337GlS6s6jxRA/boML7WpSSfkYwxreFRsIFVy+cfhZ/MnPnN93mG
+lcMVDEUnlgxjmOCKbFepj4oX1L/QkO1L4YOi7msevi6vYD2mmiN6QgR2kSaF
+yTeDIZOtSSrgizRAaKYP2TEUvsVHnVvMUYQnFg/GyWERkE9zutrrN0DSSXHN
+qs/RQI65/Ssh8Ry0sU1mVzXEwaF3bEzcsxrAQMngqp5MANtXYlNRnToQd0Ne
+ydQrEX5J3VCNOX4F5FXDHwxyJ8MSe/uDhVIDaJCgxpkmpoDPgO9sW/RNoKEp
+3DYtS4MAWQ2v/e+MIXqc58SQZjqwsFG1+2jMQKbV3sSsJwOqbiurm76yALNU
+uSqz1ax/fyaeVMb1ELbehC0P+eSAsdwXlTAOG6hXXg/Ne5ULjEQFp738T8BM
+9GaVDF8ecGTqT3Y72YP0PpbftpQ8gBe8jDpqDrDFUbKcl5YPb7gzikVFnCBi
+jU9MVqEQ/K0VBrcEXaHmR/cr2StfYYF2PfmDmwdYOv2qMRQvhuYC6pH1ek9g
+OtxD77WjBAoyqyaKRLzhokuve1v+fxBsPiBhteELP4722z7lwRDIzJGcKxUE
+D9v7c+KnMET1fhJQ734DPujxsokJCdqfvZk8VBMMR6YeywYolcPCMuw48zoE
+LFVts3omKkDbPyZz+FYEEKMX6mcNKmHSQ2lI924kMM3aTuyorITAd+eUbS2j
+ID3G7ohELBm6TkVebPSPgYl5+0TXS9Xwll2Bss6ZAA/fO4YLfKqFCyxZKwFR
+KaC8vJJ/grcOJPdqc5iqfwA2TacWNa862COfosCz9gGyVpw4rI3qYTLZpoDe
+PA1mtJ39y9h+QqqW50PBOxnw1b2sLEehCXLHtO/xW+fC+/S/P4sfNoHUSs1j
+g95c8Gs701eZ9G8P2uexfekzXD+GNzrZmyH3ql5plFQerLVjIs1oM3y7+Ddo
+lLEAlI6X512ObIXVHzpZy5tfQL6tI6KsthWCdDPseJ59BWmXKWeJzVZ4bv5a
+4PHyVxCt3avKZNwGjqem9/1ZKgaCuXUrPtYOJQmEynSaUpiK27ckWdYB5Slu
+fRNHSTCqeqIrbq4Dpo1ne8eekGBg4nwpi3An1FiINHiXkKCbaOs14tsJPuq/
+veO0yqG67TvPO90uEDf3vHjapQIS2Bzkdw13wx6uWDHNJTLE5Afwuez9BcIa
+uudOnq+CiJuJW2Mav6D/e71uVVQVBH78UUXO/gW3E3adLYFqcDonbODq1APe
+H8mOe8NrQM+1yWGStQ+eidMQE27VAZ3D7l4zPgosPevYuSDTBDfvZrR8laPA
+Jbaddw7cb4K8i1DLdpkCXOfNuTMSm8DkgFVRgQ8FZnNKfDu5mqHie2kw/RIF
+Jo2KP4UsN4PnPjO1lIY/MLWPgeLf3Ar05XnZg56DwCDZN+nysxOMMtU/KCYM
+wt1sFKDP2QUF4b2xASWDIN7R7vXqSheY3Wfwl50fBK794T7sPV1QRbhp6nl7
+CIRe3iM7zHSDjwUtr/DJYTiXa3j0u2gvMLJdfmkyMwK6zUjzizUFrh+5SVJg
+HoU1p0xDlXAKZJw122Y5PArbfgP3Vv+jgPYzJ7f8G6MgPFDoMM38ByJG3j+j
+rxqFKqf5R4tpf0C0fP5JauwYOCuWVlhPDYCaQ6jJxIUJSFxP2CkcOQyelA5V
+2+RpGI18P/fSbhJ+F1965FQ6DV05A9pziZOgFEqKcG+f/scVlk3eTZMwp5Yx
+/opxBtI80WlRySm4nen2JvnBDLArHShTnpwCJYfDPW2ys1DLEG1EejgDaztP
+Fu8zmYNNDmB4+4/nc2N9LrsvzEO0GGNcmtAS1BN8RjloFqDEZeu7MFqCkQBv
+98RdCzDP57RWdHsJ9rt6fSKLLcA7xXWzQ3FL4GfkwcR6ZwGoKycsdvFS4a6A
+OymyfgFiAm245HiWgTPhqfTnlEUg7RRmJQusgk2SGeeQAfVf/gcBM0834fb9
+GAHfl6tg1UCzakCmQ/66Didl4zagYqJ4KLiFEdHzhI88X/8L8aG1pOtbu1Bn
+vfecFwctqv6VE8h8ghtddTFRiKmkQ+9e84Et7R70kHXyUMNNegRyBbkMw3zo
+QGZ1BMPETvTnvo9m7g5B5PJV9QpHLCM6fFnKrN1KCD1OfVikIMWMViQPiLK2
+CCM2OkUTyWEWJKFXgttiRJHaI/3wY6FsKNb4u76U11HEWyxgo3aYHSVYiGmJ
+m0mgEFu/t9KdHCg7e1gyPFsK6fnoHI8v4kSvRx9F3X56Ah0z9Lqa4saFPl1m
+busUlEUdI8xJoVe50VMxj4GrdPKowWRYhfsAAfWu6ucz/lJAf+jTVsMPEVDG
+kQfz1gMKaCnVModPlIDU1ypKOicUEN/k5H6h4wQ06qU4m7WhgMzsFlakThFQ
+62m5/ocCimjdcztL6xoBaSm49sgZKyLRD3z8/m8IiKxyXm16XBGdVO9pYgsl
+oCt1wZPeC4pIczzONziCgD5T9wsc3FBET44fpEbG/9OTWxe6wUZEpYWiTamZ
+BFSh/z2vT5KI9Kplfcg1BHR2X/6ctD0RmVtSlS/UE1Be095LA65E5MTyZbG+
+gYDmxMqkw72JKF5bybi1/Z9eeWP8dgQRjXUg5YFBAjoXzrA9UkxE6050i+aj
+BCRk7JSfUkFEu/aR08cnCKixUXzRtJ6IZO6o752fJ6CQ8Gs8o71EpEbL3GBP
+/XefqUZqxjARXU+u81pdJaC3I/4mj2eI6L5a4CnXzX/+PL1vKq4Q0f/1Iej/
++5D/ATO5lU4=
+       "]]},
+     Annotation[#, "Charting`Private`Tag$40554#1"]& ]}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesLabel->{None, None},
+  AxesOrigin->{0, 0},
+  BaseStyle->{FontFamily -> "Arial"},
+  DisplayFunction->Identity,
+  Epilog->{
+    PointBox[CompressedData["
+1:eJw90clJBEEUBuCacR33cfc4YAJiAnMwAQ1BvHhRPJqFaRiCdxMZENz3fW2/
+Hxsbfr6C7qr36nVnc3djp1lKWZV4WlXVnsUZuzxnmxc8aZRyySNe8YDX3OYN
+13jLDu9YeM+ecx94zEce8in7+cx9vnCLr1znW+rznSv84DI/ucQvTvGbLf6w
+n6iU/X8adXK3vO+TVr3O/gHJeYOS84ck9YalW3+bfkYk/Y1K+h2T9D8uuc+E
+5H6T0qvPTuE2Mo9pZj4zzLxms59zzDznmfkuMPNeTP3mX2/5H7+HiXbj
+     "]], {{
+      LineBox[{{-25, 625}, {2, 4}}], 
+      LineBox[{{-25, 625}, {3, 9}}], 
+      LineBox[{{-25, 625}, {4, 16}}], 
+      LineBox[{{-25, 625}, {5, 25}}], 
+      LineBox[{{-25, 625}, {6, 36}}], 
+      LineBox[{{-25, 625}, {7, 49}}], 
+      LineBox[{{-25, 625}, {8, 64}}], 
+      LineBox[{{-25, 625}, {9, 81}}], 
+      LineBox[{{-25, 625}, {10, 100}}], 
+      LineBox[{{-25, 625}, {11, 121}}], 
+      LineBox[{{-25, 625}, {12, 144}}], 
+      LineBox[{{-25, 625}, {13, 169}}], 
+      LineBox[{{-25, 625}, {14, 196}}], 
+      LineBox[{{-25, 625}, {15, 225}}], 
+      LineBox[{{-25, 625}, {16, 256}}], 
+      LineBox[{{-25, 625}, {17, 289}}], 
+      LineBox[{{-25, 625}, {18, 324}}], 
+      LineBox[{{-25, 625}, {19, 361}}], 
+      LineBox[{{-25, 625}, {20, 400}}], 
+      LineBox[{{-25, 625}, {21, 441}}], 
+      LineBox[{{-25, 625}, {22, 484}}], 
+      LineBox[{{-25, 625}, {23, 529}}], 
+      LineBox[{{-25, 625}, {24, 576}}], 
+      LineBox[{{-25, 625}, {25, 625}}]}, {
+      LineBox[{{-24, 576}, {2, 4}}], 
+      LineBox[{{-24, 576}, {3, 9}}], 
+      LineBox[{{-24, 576}, {4, 16}}], 
+      LineBox[{{-24, 576}, {5, 25}}], 
+      LineBox[{{-24, 576}, {6, 36}}], 
+      LineBox[{{-24, 576}, {7, 49}}], 
+      LineBox[{{-24, 576}, {8, 64}}], 
+      LineBox[{{-24, 576}, {9, 81}}], 
+      LineBox[{{-24, 576}, {10, 100}}], 
+      LineBox[{{-24, 576}, {11, 121}}], 
+      LineBox[{{-24, 576}, {12, 144}}], 
+      LineBox[{{-24, 576}, {13, 169}}], 
+      LineBox[{{-24, 576}, {14, 196}}], 
+      LineBox[{{-24, 576}, {15, 225}}], 
+      LineBox[{{-24, 576}, {16, 256}}], 
+      LineBox[{{-24, 576}, {17, 289}}], 
+      LineBox[{{-24, 576}, {18, 324}}], 
+      LineBox[{{-24, 576}, {19, 361}}], 
+      LineBox[{{-24, 576}, {20, 400}}], 
+      LineBox[{{-24, 576}, {21, 441}}], 
+      LineBox[{{-24, 576}, {22, 484}}], 
+      LineBox[{{-24, 576}, {23, 529}}], 
+      LineBox[{{-24, 576}, {24, 576}}], 
+      LineBox[{{-24, 576}, {25, 625}}]}, {
+      LineBox[{{-23, 529}, {2, 4}}], 
+      LineBox[{{-23, 529}, {3, 9}}], 
+      LineBox[{{-23, 529}, {4, 16}}], 
+      LineBox[{{-23, 529}, {5, 25}}], 
+      LineBox[{{-23, 529}, {6, 36}}], 
+      LineBox[{{-23, 529}, {7, 49}}], 
+      LineBox[{{-23, 529}, {8, 64}}], 
+      LineBox[{{-23, 529}, {9, 81}}], 
+      LineBox[{{-23, 529}, {10, 100}}], 
+      LineBox[{{-23, 529}, {11, 121}}], 
+      LineBox[{{-23, 529}, {12, 144}}], 
+      LineBox[{{-23, 529}, {13, 169}}], 
+      LineBox[{{-23, 529}, {14, 196}}], 
+      LineBox[{{-23, 529}, {15, 225}}], 
+      LineBox[{{-23, 529}, {16, 256}}], 
+      LineBox[{{-23, 529}, {17, 289}}], 
+      LineBox[{{-23, 529}, {18, 324}}], 
+      LineBox[{{-23, 529}, {19, 361}}], 
+      LineBox[{{-23, 529}, {20, 400}}], 
+      LineBox[{{-23, 529}, {21, 441}}], 
+      LineBox[{{-23, 529}, {22, 484}}], 
+      LineBox[{{-23, 529}, {23, 529}}], 
+      LineBox[{{-23, 529}, {24, 576}}], 
+      LineBox[{{-23, 529}, {25, 625}}]}, {
+      LineBox[{{-22, 484}, {2, 4}}], 
+      LineBox[{{-22, 484}, {3, 9}}], 
+      LineBox[{{-22, 484}, {4, 16}}], 
+      LineBox[{{-22, 484}, {5, 25}}], 
+      LineBox[{{-22, 484}, {6, 36}}], 
+      LineBox[{{-22, 484}, {7, 49}}], 
+      LineBox[{{-22, 484}, {8, 64}}], 
+      LineBox[{{-22, 484}, {9, 81}}], 
+      LineBox[{{-22, 484}, {10, 100}}], 
+      LineBox[{{-22, 484}, {11, 121}}], 
+      LineBox[{{-22, 484}, {12, 144}}], 
+      LineBox[{{-22, 484}, {13, 169}}], 
+      LineBox[{{-22, 484}, {14, 196}}], 
+      LineBox[{{-22, 484}, {15, 225}}], 
+      LineBox[{{-22, 484}, {16, 256}}], 
+      LineBox[{{-22, 484}, {17, 289}}], 
+      LineBox[{{-22, 484}, {18, 324}}], 
+      LineBox[{{-22, 484}, {19, 361}}], 
+      LineBox[{{-22, 484}, {20, 400}}], 
+      LineBox[{{-22, 484}, {21, 441}}], 
+      LineBox[{{-22, 484}, {22, 484}}], 
+      LineBox[{{-22, 484}, {23, 529}}], 
+      LineBox[{{-22, 484}, {24, 576}}], 
+      LineBox[{{-22, 484}, {25, 625}}]}, {
+      LineBox[{{-21, 441}, {2, 4}}], 
+      LineBox[{{-21, 441}, {3, 9}}], 
+      LineBox[{{-21, 441}, {4, 16}}], 
+      LineBox[{{-21, 441}, {5, 25}}], 
+      LineBox[{{-21, 441}, {6, 36}}], 
+      LineBox[{{-21, 441}, {7, 49}}], 
+      LineBox[{{-21, 441}, {8, 64}}], 
+      LineBox[{{-21, 441}, {9, 81}}], 
+      LineBox[{{-21, 441}, {10, 100}}], 
+      LineBox[{{-21, 441}, {11, 121}}], 
+      LineBox[{{-21, 441}, {12, 144}}], 
+      LineBox[{{-21, 441}, {13, 169}}], 
+      LineBox[{{-21, 441}, {14, 196}}], 
+      LineBox[{{-21, 441}, {15, 225}}], 
+      LineBox[{{-21, 441}, {16, 256}}], 
+      LineBox[{{-21, 441}, {17, 289}}], 
+      LineBox[{{-21, 441}, {18, 324}}], 
+      LineBox[{{-21, 441}, {19, 361}}], 
+      LineBox[{{-21, 441}, {20, 400}}], 
+      LineBox[{{-21, 441}, {21, 441}}], 
+      LineBox[{{-21, 441}, {22, 484}}], 
+      LineBox[{{-21, 441}, {23, 529}}], 
+      LineBox[{{-21, 441}, {24, 576}}], 
+      LineBox[{{-21, 441}, {25, 625}}]}, {
+      LineBox[{{-20, 400}, {2, 4}}], 
+      LineBox[{{-20, 400}, {3, 9}}], 
+      LineBox[{{-20, 400}, {4, 16}}], 
+      LineBox[{{-20, 400}, {5, 25}}], 
+      LineBox[{{-20, 400}, {6, 36}}], 
+      LineBox[{{-20, 400}, {7, 49}}], 
+      LineBox[{{-20, 400}, {8, 64}}], 
+      LineBox[{{-20, 400}, {9, 81}}], 
+      LineBox[{{-20, 400}, {10, 100}}], 
+      LineBox[{{-20, 400}, {11, 121}}], 
+      LineBox[{{-20, 400}, {12, 144}}], 
+      LineBox[{{-20, 400}, {13, 169}}], 
+      LineBox[{{-20, 400}, {14, 196}}], 
+      LineBox[{{-20, 400}, {15, 225}}], 
+      LineBox[{{-20, 400}, {16, 256}}], 
+      LineBox[{{-20, 400}, {17, 289}}], 
+      LineBox[{{-20, 400}, {18, 324}}], 
+      LineBox[{{-20, 400}, {19, 361}}], 
+      LineBox[{{-20, 400}, {20, 400}}], 
+      LineBox[{{-20, 400}, {21, 441}}], 
+      LineBox[{{-20, 400}, {22, 484}}], 
+      LineBox[{{-20, 400}, {23, 529}}], 
+      LineBox[{{-20, 400}, {24, 576}}], 
+      LineBox[{{-20, 400}, {25, 625}}]}, {
+      LineBox[{{-19, 361}, {2, 4}}], 
+      LineBox[{{-19, 361}, {3, 9}}], 
+      LineBox[{{-19, 361}, {4, 16}}], 
+      LineBox[{{-19, 361}, {5, 25}}], 
+      LineBox[{{-19, 361}, {6, 36}}], 
+      LineBox[{{-19, 361}, {7, 49}}], 
+      LineBox[{{-19, 361}, {8, 64}}], 
+      LineBox[{{-19, 361}, {9, 81}}], 
+      LineBox[{{-19, 361}, {10, 100}}], 
+      LineBox[{{-19, 361}, {11, 121}}], 
+      LineBox[{{-19, 361}, {12, 144}}], 
+      LineBox[{{-19, 361}, {13, 169}}], 
+      LineBox[{{-19, 361}, {14, 196}}], 
+      LineBox[{{-19, 361}, {15, 225}}], 
+      LineBox[{{-19, 361}, {16, 256}}], 
+      LineBox[{{-19, 361}, {17, 289}}], 
+      LineBox[{{-19, 361}, {18, 324}}], 
+      LineBox[{{-19, 361}, {19, 361}}], 
+      LineBox[{{-19, 361}, {20, 400}}], 
+      LineBox[{{-19, 361}, {21, 441}}], 
+      LineBox[{{-19, 361}, {22, 484}}], 
+      LineBox[{{-19, 361}, {23, 529}}], 
+      LineBox[{{-19, 361}, {24, 576}}], 
+      LineBox[{{-19, 361}, {25, 625}}]}, {
+      LineBox[{{-18, 324}, {2, 4}}], 
+      LineBox[{{-18, 324}, {3, 9}}], 
+      LineBox[{{-18, 324}, {4, 16}}], 
+      LineBox[{{-18, 324}, {5, 25}}], 
+      LineBox[{{-18, 324}, {6, 36}}], 
+      LineBox[{{-18, 324}, {7, 49}}], 
+      LineBox[{{-18, 324}, {8, 64}}], 
+      LineBox[{{-18, 324}, {9, 81}}], 
+      LineBox[{{-18, 324}, {10, 100}}], 
+      LineBox[{{-18, 324}, {11, 121}}], 
+      LineBox[{{-18, 324}, {12, 144}}], 
+      LineBox[{{-18, 324}, {13, 169}}], 
+      LineBox[{{-18, 324}, {14, 196}}], 
+      LineBox[{{-18, 324}, {15, 225}}], 
+      LineBox[{{-18, 324}, {16, 256}}], 
+      LineBox[{{-18, 324}, {17, 289}}], 
+      LineBox[{{-18, 324}, {18, 324}}], 
+      LineBox[{{-18, 324}, {19, 361}}], 
+      LineBox[{{-18, 324}, {20, 400}}], 
+      LineBox[{{-18, 324}, {21, 441}}], 
+      LineBox[{{-18, 324}, {22, 484}}], 
+      LineBox[{{-18, 324}, {23, 529}}], 
+      LineBox[{{-18, 324}, {24, 576}}], 
+      LineBox[{{-18, 324}, {25, 625}}]}, {
+      LineBox[{{-17, 289}, {2, 4}}], 
+      LineBox[{{-17, 289}, {3, 9}}], 
+      LineBox[{{-17, 289}, {4, 16}}], 
+      LineBox[{{-17, 289}, {5, 25}}], 
+      LineBox[{{-17, 289}, {6, 36}}], 
+      LineBox[{{-17, 289}, {7, 49}}], 
+      LineBox[{{-17, 289}, {8, 64}}], 
+      LineBox[{{-17, 289}, {9, 81}}], 
+      LineBox[{{-17, 289}, {10, 100}}], 
+      LineBox[{{-17, 289}, {11, 121}}], 
+      LineBox[{{-17, 289}, {12, 144}}], 
+      LineBox[{{-17, 289}, {13, 169}}], 
+      LineBox[{{-17, 289}, {14, 196}}], 
+      LineBox[{{-17, 289}, {15, 225}}], 
+      LineBox[{{-17, 289}, {16, 256}}], 
+      LineBox[{{-17, 289}, {17, 289}}], 
+      LineBox[{{-17, 289}, {18, 324}}], 
+      LineBox[{{-17, 289}, {19, 361}}], 
+      LineBox[{{-17, 289}, {20, 400}}], 
+      LineBox[{{-17, 289}, {21, 441}}], 
+      LineBox[{{-17, 289}, {22, 484}}], 
+      LineBox[{{-17, 289}, {23, 529}}], 
+      LineBox[{{-17, 289}, {24, 576}}], 
+      LineBox[{{-17, 289}, {25, 625}}]}, {
+      LineBox[{{-16, 256}, {2, 4}}], 
+      LineBox[{{-16, 256}, {3, 9}}], 
+      LineBox[{{-16, 256}, {4, 16}}], 
+      LineBox[{{-16, 256}, {5, 25}}], 
+      LineBox[{{-16, 256}, {6, 36}}], 
+      LineBox[{{-16, 256}, {7, 49}}], 
+      LineBox[{{-16, 256}, {8, 64}}], 
+      LineBox[{{-16, 256}, {9, 81}}], 
+      LineBox[{{-16, 256}, {10, 100}}], 
+      LineBox[{{-16, 256}, {11, 121}}], 
+      LineBox[{{-16, 256}, {12, 144}}], 
+      LineBox[{{-16, 256}, {13, 169}}], 
+      LineBox[{{-16, 256}, {14, 196}}], 
+      LineBox[{{-16, 256}, {15, 225}}], 
+      LineBox[{{-16, 256}, {16, 256}}], 
+      LineBox[{{-16, 256}, {17, 289}}], 
+      LineBox[{{-16, 256}, {18, 324}}], 
+      LineBox[{{-16, 256}, {19, 361}}], 
+      LineBox[{{-16, 256}, {20, 400}}], 
+      LineBox[{{-16, 256}, {21, 441}}], 
+      LineBox[{{-16, 256}, {22, 484}}], 
+      LineBox[{{-16, 256}, {23, 529}}], 
+      LineBox[{{-16, 256}, {24, 576}}], 
+      LineBox[{{-16, 256}, {25, 625}}]}, {
+      LineBox[{{-15, 225}, {2, 4}}], 
+      LineBox[{{-15, 225}, {3, 9}}], 
+      LineBox[{{-15, 225}, {4, 16}}], 
+      LineBox[{{-15, 225}, {5, 25}}], 
+      LineBox[{{-15, 225}, {6, 36}}], 
+      LineBox[{{-15, 225}, {7, 49}}], 
+      LineBox[{{-15, 225}, {8, 64}}], 
+      LineBox[{{-15, 225}, {9, 81}}], 
+      LineBox[{{-15, 225}, {10, 100}}], 
+      LineBox[{{-15, 225}, {11, 121}}], 
+      LineBox[{{-15, 225}, {12, 144}}], 
+      LineBox[{{-15, 225}, {13, 169}}], 
+      LineBox[{{-15, 225}, {14, 196}}], 
+      LineBox[{{-15, 225}, {15, 225}}], 
+      LineBox[{{-15, 225}, {16, 256}}], 
+      LineBox[{{-15, 225}, {17, 289}}], 
+      LineBox[{{-15, 225}, {18, 324}}], 
+      LineBox[{{-15, 225}, {19, 361}}], 
+      LineBox[{{-15, 225}, {20, 400}}], 
+      LineBox[{{-15, 225}, {21, 441}}], 
+      LineBox[{{-15, 225}, {22, 484}}], 
+      LineBox[{{-15, 225}, {23, 529}}], 
+      LineBox[{{-15, 225}, {24, 576}}], 
+      LineBox[{{-15, 225}, {25, 625}}]}, {
+      LineBox[{{-14, 196}, {2, 4}}], 
+      LineBox[{{-14, 196}, {3, 9}}], 
+      LineBox[{{-14, 196}, {4, 16}}], 
+      LineBox[{{-14, 196}, {5, 25}}], 
+      LineBox[{{-14, 196}, {6, 36}}], 
+      LineBox[{{-14, 196}, {7, 49}}], 
+      LineBox[{{-14, 196}, {8, 64}}], 
+      LineBox[{{-14, 196}, {9, 81}}], 
+      LineBox[{{-14, 196}, {10, 100}}], 
+      LineBox[{{-14, 196}, {11, 121}}], 
+      LineBox[{{-14, 196}, {12, 144}}], 
+      LineBox[{{-14, 196}, {13, 169}}], 
+      LineBox[{{-14, 196}, {14, 196}}], 
+      LineBox[{{-14, 196}, {15, 225}}], 
+      LineBox[{{-14, 196}, {16, 256}}], 
+      LineBox[{{-14, 196}, {17, 289}}], 
+      LineBox[{{-14, 196}, {18, 324}}], 
+      LineBox[{{-14, 196}, {19, 361}}], 
+      LineBox[{{-14, 196}, {20, 400}}], 
+      LineBox[{{-14, 196}, {21, 441}}], 
+      LineBox[{{-14, 196}, {22, 484}}], 
+      LineBox[{{-14, 196}, {23, 529}}], 
+      LineBox[{{-14, 196}, {24, 576}}], 
+      LineBox[{{-14, 196}, {25, 625}}]}, {
+      LineBox[{{-13, 169}, {2, 4}}], 
+      LineBox[{{-13, 169}, {3, 9}}], 
+      LineBox[{{-13, 169}, {4, 16}}], 
+      LineBox[{{-13, 169}, {5, 25}}], 
+      LineBox[{{-13, 169}, {6, 36}}], 
+      LineBox[{{-13, 169}, {7, 49}}], 
+      LineBox[{{-13, 169}, {8, 64}}], 
+      LineBox[{{-13, 169}, {9, 81}}], 
+      LineBox[{{-13, 169}, {10, 100}}], 
+      LineBox[{{-13, 169}, {11, 121}}], 
+      LineBox[{{-13, 169}, {12, 144}}], 
+      LineBox[{{-13, 169}, {13, 169}}], 
+      LineBox[{{-13, 169}, {14, 196}}], 
+      LineBox[{{-13, 169}, {15, 225}}], 
+      LineBox[{{-13, 169}, {16, 256}}], 
+      LineBox[{{-13, 169}, {17, 289}}], 
+      LineBox[{{-13, 169}, {18, 324}}], 
+      LineBox[{{-13, 169}, {19, 361}}], 
+      LineBox[{{-13, 169}, {20, 400}}], 
+      LineBox[{{-13, 169}, {21, 441}}], 
+      LineBox[{{-13, 169}, {22, 484}}], 
+      LineBox[{{-13, 169}, {23, 529}}], 
+      LineBox[{{-13, 169}, {24, 576}}], 
+      LineBox[{{-13, 169}, {25, 625}}]}, {
+      LineBox[{{-12, 144}, {2, 4}}], 
+      LineBox[{{-12, 144}, {3, 9}}], 
+      LineBox[{{-12, 144}, {4, 16}}], 
+      LineBox[{{-12, 144}, {5, 25}}], 
+      LineBox[{{-12, 144}, {6, 36}}], 
+      LineBox[{{-12, 144}, {7, 49}}], 
+      LineBox[{{-12, 144}, {8, 64}}], 
+      LineBox[{{-12, 144}, {9, 81}}], 
+      LineBox[{{-12, 144}, {10, 100}}], 
+      LineBox[{{-12, 144}, {11, 121}}], 
+      LineBox[{{-12, 144}, {12, 144}}], 
+      LineBox[{{-12, 144}, {13, 169}}], 
+      LineBox[{{-12, 144}, {14, 196}}], 
+      LineBox[{{-12, 144}, {15, 225}}], 
+      LineBox[{{-12, 144}, {16, 256}}], 
+      LineBox[{{-12, 144}, {17, 289}}], 
+      LineBox[{{-12, 144}, {18, 324}}], 
+      LineBox[{{-12, 144}, {19, 361}}], 
+      LineBox[{{-12, 144}, {20, 400}}], 
+      LineBox[{{-12, 144}, {21, 441}}], 
+      LineBox[{{-12, 144}, {22, 484}}], 
+      LineBox[{{-12, 144}, {23, 529}}], 
+      LineBox[{{-12, 144}, {24, 576}}], 
+      LineBox[{{-12, 144}, {25, 625}}]}, {
+      LineBox[{{-11, 121}, {2, 4}}], 
+      LineBox[{{-11, 121}, {3, 9}}], 
+      LineBox[{{-11, 121}, {4, 16}}], 
+      LineBox[{{-11, 121}, {5, 25}}], 
+      LineBox[{{-11, 121}, {6, 36}}], 
+      LineBox[{{-11, 121}, {7, 49}}], 
+      LineBox[{{-11, 121}, {8, 64}}], 
+      LineBox[{{-11, 121}, {9, 81}}], 
+      LineBox[{{-11, 121}, {10, 100}}], 
+      LineBox[{{-11, 121}, {11, 121}}], 
+      LineBox[{{-11, 121}, {12, 144}}], 
+      LineBox[{{-11, 121}, {13, 169}}], 
+      LineBox[{{-11, 121}, {14, 196}}], 
+      LineBox[{{-11, 121}, {15, 225}}], 
+      LineBox[{{-11, 121}, {16, 256}}], 
+      LineBox[{{-11, 121}, {17, 289}}], 
+      LineBox[{{-11, 121}, {18, 324}}], 
+      LineBox[{{-11, 121}, {19, 361}}], 
+      LineBox[{{-11, 121}, {20, 400}}], 
+      LineBox[{{-11, 121}, {21, 441}}], 
+      LineBox[{{-11, 121}, {22, 484}}], 
+      LineBox[{{-11, 121}, {23, 529}}], 
+      LineBox[{{-11, 121}, {24, 576}}], 
+      LineBox[{{-11, 121}, {25, 625}}]}, {
+      LineBox[{{-10, 100}, {2, 4}}], 
+      LineBox[{{-10, 100}, {3, 9}}], 
+      LineBox[{{-10, 100}, {4, 16}}], 
+      LineBox[{{-10, 100}, {5, 25}}], 
+      LineBox[{{-10, 100}, {6, 36}}], 
+      LineBox[{{-10, 100}, {7, 49}}], 
+      LineBox[{{-10, 100}, {8, 64}}], 
+      LineBox[{{-10, 100}, {9, 81}}], 
+      LineBox[{{-10, 100}, {10, 100}}], 
+      LineBox[{{-10, 100}, {11, 121}}], 
+      LineBox[{{-10, 100}, {12, 144}}], 
+      LineBox[{{-10, 100}, {13, 169}}], 
+      LineBox[{{-10, 100}, {14, 196}}], 
+      LineBox[{{-10, 100}, {15, 225}}], 
+      LineBox[{{-10, 100}, {16, 256}}], 
+      LineBox[{{-10, 100}, {17, 289}}], 
+      LineBox[{{-10, 100}, {18, 324}}], 
+      LineBox[{{-10, 100}, {19, 361}}], 
+      LineBox[{{-10, 100}, {20, 400}}], 
+      LineBox[{{-10, 100}, {21, 441}}], 
+      LineBox[{{-10, 100}, {22, 484}}], 
+      LineBox[{{-10, 100}, {23, 529}}], 
+      LineBox[{{-10, 100}, {24, 576}}], 
+      LineBox[{{-10, 100}, {25, 625}}]}, {
+      LineBox[{{-9, 81}, {2, 4}}], 
+      LineBox[{{-9, 81}, {3, 9}}], 
+      LineBox[{{-9, 81}, {4, 16}}], 
+      LineBox[{{-9, 81}, {5, 25}}], 
+      LineBox[{{-9, 81}, {6, 36}}], 
+      LineBox[{{-9, 81}, {7, 49}}], 
+      LineBox[{{-9, 81}, {8, 64}}], 
+      LineBox[{{-9, 81}, {9, 81}}], 
+      LineBox[{{-9, 81}, {10, 100}}], 
+      LineBox[{{-9, 81}, {11, 121}}], 
+      LineBox[{{-9, 81}, {12, 144}}], 
+      LineBox[{{-9, 81}, {13, 169}}], 
+      LineBox[{{-9, 81}, {14, 196}}], 
+      LineBox[{{-9, 81}, {15, 225}}], 
+      LineBox[{{-9, 81}, {16, 256}}], 
+      LineBox[{{-9, 81}, {17, 289}}], 
+      LineBox[{{-9, 81}, {18, 324}}], 
+      LineBox[{{-9, 81}, {19, 361}}], 
+      LineBox[{{-9, 81}, {20, 400}}], 
+      LineBox[{{-9, 81}, {21, 441}}], 
+      LineBox[{{-9, 81}, {22, 484}}], 
+      LineBox[{{-9, 81}, {23, 529}}], 
+      LineBox[{{-9, 81}, {24, 576}}], 
+      LineBox[{{-9, 81}, {25, 625}}]}, {
+      LineBox[{{-8, 64}, {2, 4}}], 
+      LineBox[{{-8, 64}, {3, 9}}], 
+      LineBox[{{-8, 64}, {4, 16}}], 
+      LineBox[{{-8, 64}, {5, 25}}], 
+      LineBox[{{-8, 64}, {6, 36}}], 
+      LineBox[{{-8, 64}, {7, 49}}], 
+      LineBox[{{-8, 64}, {8, 64}}], 
+      LineBox[{{-8, 64}, {9, 81}}], 
+      LineBox[{{-8, 64}, {10, 100}}], 
+      LineBox[{{-8, 64}, {11, 121}}], 
+      LineBox[{{-8, 64}, {12, 144}}], 
+      LineBox[{{-8, 64}, {13, 169}}], 
+      LineBox[{{-8, 64}, {14, 196}}], 
+      LineBox[{{-8, 64}, {15, 225}}], 
+      LineBox[{{-8, 64}, {16, 256}}], 
+      LineBox[{{-8, 64}, {17, 289}}], 
+      LineBox[{{-8, 64}, {18, 324}}], 
+      LineBox[{{-8, 64}, {19, 361}}], 
+      LineBox[{{-8, 64}, {20, 400}}], 
+      LineBox[{{-8, 64}, {21, 441}}], 
+      LineBox[{{-8, 64}, {22, 484}}], 
+      LineBox[{{-8, 64}, {23, 529}}], 
+      LineBox[{{-8, 64}, {24, 576}}], 
+      LineBox[{{-8, 64}, {25, 625}}]}, {
+      LineBox[{{-7, 49}, {2, 4}}], 
+      LineBox[{{-7, 49}, {3, 9}}], 
+      LineBox[{{-7, 49}, {4, 16}}], 
+      LineBox[{{-7, 49}, {5, 25}}], 
+      LineBox[{{-7, 49}, {6, 36}}], 
+      LineBox[{{-7, 49}, {7, 49}}], 
+      LineBox[{{-7, 49}, {8, 64}}], 
+      LineBox[{{-7, 49}, {9, 81}}], 
+      LineBox[{{-7, 49}, {10, 100}}], 
+      LineBox[{{-7, 49}, {11, 121}}], 
+      LineBox[{{-7, 49}, {12, 144}}], 
+      LineBox[{{-7, 49}, {13, 169}}], 
+      LineBox[{{-7, 49}, {14, 196}}], 
+      LineBox[{{-7, 49}, {15, 225}}], 
+      LineBox[{{-7, 49}, {16, 256}}], 
+      LineBox[{{-7, 49}, {17, 289}}], 
+      LineBox[{{-7, 49}, {18, 324}}], 
+      LineBox[{{-7, 49}, {19, 361}}], 
+      LineBox[{{-7, 49}, {20, 400}}], 
+      LineBox[{{-7, 49}, {21, 441}}], 
+      LineBox[{{-7, 49}, {22, 484}}], 
+      LineBox[{{-7, 49}, {23, 529}}], 
+      LineBox[{{-7, 49}, {24, 576}}], 
+      LineBox[{{-7, 49}, {25, 625}}]}, {
+      LineBox[{{-6, 36}, {2, 4}}], 
+      LineBox[{{-6, 36}, {3, 9}}], 
+      LineBox[{{-6, 36}, {4, 16}}], 
+      LineBox[{{-6, 36}, {5, 25}}], 
+      LineBox[{{-6, 36}, {6, 36}}], 
+      LineBox[{{-6, 36}, {7, 49}}], 
+      LineBox[{{-6, 36}, {8, 64}}], 
+      LineBox[{{-6, 36}, {9, 81}}], 
+      LineBox[{{-6, 36}, {10, 100}}], 
+      LineBox[{{-6, 36}, {11, 121}}], 
+      LineBox[{{-6, 36}, {12, 144}}], 
+      LineBox[{{-6, 36}, {13, 169}}], 
+      LineBox[{{-6, 36}, {14, 196}}], 
+      LineBox[{{-6, 36}, {15, 225}}], 
+      LineBox[{{-6, 36}, {16, 256}}], 
+      LineBox[{{-6, 36}, {17, 289}}], 
+      LineBox[{{-6, 36}, {18, 324}}], 
+      LineBox[{{-6, 36}, {19, 361}}], 
+      LineBox[{{-6, 36}, {20, 400}}], 
+      LineBox[{{-6, 36}, {21, 441}}], 
+      LineBox[{{-6, 36}, {22, 484}}], 
+      LineBox[{{-6, 36}, {23, 529}}], 
+      LineBox[{{-6, 36}, {24, 576}}], 
+      LineBox[{{-6, 36}, {25, 625}}]}, {
+      LineBox[{{-5, 25}, {2, 4}}], 
+      LineBox[{{-5, 25}, {3, 9}}], 
+      LineBox[{{-5, 25}, {4, 16}}], 
+      LineBox[{{-5, 25}, {5, 25}}], 
+      LineBox[{{-5, 25}, {6, 36}}], 
+      LineBox[{{-5, 25}, {7, 49}}], 
+      LineBox[{{-5, 25}, {8, 64}}], 
+      LineBox[{{-5, 25}, {9, 81}}], 
+      LineBox[{{-5, 25}, {10, 100}}], 
+      LineBox[{{-5, 25}, {11, 121}}], 
+      LineBox[{{-5, 25}, {12, 144}}], 
+      LineBox[{{-5, 25}, {13, 169}}], 
+      LineBox[{{-5, 25}, {14, 196}}], 
+      LineBox[{{-5, 25}, {15, 225}}], 
+      LineBox[{{-5, 25}, {16, 256}}], 
+      LineBox[{{-5, 25}, {17, 289}}], 
+      LineBox[{{-5, 25}, {18, 324}}], 
+      LineBox[{{-5, 25}, {19, 361}}], 
+      LineBox[{{-5, 25}, {20, 400}}], 
+      LineBox[{{-5, 25}, {21, 441}}], 
+      LineBox[{{-5, 25}, {22, 484}}], 
+      LineBox[{{-5, 25}, {23, 529}}], 
+      LineBox[{{-5, 25}, {24, 576}}], 
+      LineBox[{{-5, 25}, {25, 625}}]}, {
+      LineBox[{{-4, 16}, {2, 4}}], 
+      LineBox[{{-4, 16}, {3, 9}}], 
+      LineBox[{{-4, 16}, {4, 16}}], 
+      LineBox[{{-4, 16}, {5, 25}}], 
+      LineBox[{{-4, 16}, {6, 36}}], 
+      LineBox[{{-4, 16}, {7, 49}}], 
+      LineBox[{{-4, 16}, {8, 64}}], 
+      LineBox[{{-4, 16}, {9, 81}}], 
+      LineBox[{{-4, 16}, {10, 100}}], 
+      LineBox[{{-4, 16}, {11, 121}}], 
+      LineBox[{{-4, 16}, {12, 144}}], 
+      LineBox[{{-4, 16}, {13, 169}}], 
+      LineBox[{{-4, 16}, {14, 196}}], 
+      LineBox[{{-4, 16}, {15, 225}}], 
+      LineBox[{{-4, 16}, {16, 256}}], 
+      LineBox[{{-4, 16}, {17, 289}}], 
+      LineBox[{{-4, 16}, {18, 324}}], 
+      LineBox[{{-4, 16}, {19, 361}}], 
+      LineBox[{{-4, 16}, {20, 400}}], 
+      LineBox[{{-4, 16}, {21, 441}}], 
+      LineBox[{{-4, 16}, {22, 484}}], 
+      LineBox[{{-4, 16}, {23, 529}}], 
+      LineBox[{{-4, 16}, {24, 576}}], 
+      LineBox[{{-4, 16}, {25, 625}}]}, {
+      LineBox[{{-3, 9}, {2, 4}}], 
+      LineBox[{{-3, 9}, {3, 9}}], 
+      LineBox[{{-3, 9}, {4, 16}}], 
+      LineBox[{{-3, 9}, {5, 25}}], 
+      LineBox[{{-3, 9}, {6, 36}}], 
+      LineBox[{{-3, 9}, {7, 49}}], 
+      LineBox[{{-3, 9}, {8, 64}}], 
+      LineBox[{{-3, 9}, {9, 81}}], 
+      LineBox[{{-3, 9}, {10, 100}}], 
+      LineBox[{{-3, 9}, {11, 121}}], 
+      LineBox[{{-3, 9}, {12, 144}}], 
+      LineBox[{{-3, 9}, {13, 169}}], 
+      LineBox[{{-3, 9}, {14, 196}}], 
+      LineBox[{{-3, 9}, {15, 225}}], 
+      LineBox[{{-3, 9}, {16, 256}}], 
+      LineBox[{{-3, 9}, {17, 289}}], 
+      LineBox[{{-3, 9}, {18, 324}}], 
+      LineBox[{{-3, 9}, {19, 361}}], 
+      LineBox[{{-3, 9}, {20, 400}}], 
+      LineBox[{{-3, 9}, {21, 441}}], 
+      LineBox[{{-3, 9}, {22, 484}}], 
+      LineBox[{{-3, 9}, {23, 529}}], 
+      LineBox[{{-3, 9}, {24, 576}}], 
+      LineBox[{{-3, 9}, {25, 625}}]}, {
+      LineBox[{{-2, 4}, {2, 4}}], 
+      LineBox[{{-2, 4}, {3, 9}}], 
+      LineBox[{{-2, 4}, {4, 16}}], 
+      LineBox[{{-2, 4}, {5, 25}}], 
+      LineBox[{{-2, 4}, {6, 36}}], 
+      LineBox[{{-2, 4}, {7, 49}}], 
+      LineBox[{{-2, 4}, {8, 64}}], 
+      LineBox[{{-2, 4}, {9, 81}}], 
+      LineBox[{{-2, 4}, {10, 100}}], 
+      LineBox[{{-2, 4}, {11, 121}}], 
+      LineBox[{{-2, 4}, {12, 144}}], 
+      LineBox[{{-2, 4}, {13, 169}}], 
+      LineBox[{{-2, 4}, {14, 196}}], 
+      LineBox[{{-2, 4}, {15, 225}}], 
+      LineBox[{{-2, 4}, {16, 256}}], 
+      LineBox[{{-2, 4}, {17, 289}}], 
+      LineBox[{{-2, 4}, {18, 324}}], 
+      LineBox[{{-2, 4}, {19, 361}}], 
+      LineBox[{{-2, 4}, {20, 400}}], 
+      LineBox[{{-2, 4}, {21, 441}}], 
+      LineBox[{{-2, 4}, {22, 484}}], 
+      LineBox[{{-2, 4}, {23, 529}}], 
+      LineBox[{{-2, 4}, {24, 576}}], 
+      LineBox[{{-2, 4}, {25, 625}}]}}, {
+     PointSize[Large], 
+     RGBColor[1, 0, 0], 
+     PointBox[{{0, 2}, {0, 3}, {0, 5}, {0, 7}, {0, 11}, {0, 13}, {0, 17}, {0, 
+      19}, {0, 23}, {0, 29}, {0, 31}, {0, 37}, {0, 41}, {0, 43}, {0, 47}, {0, 
+      53}, {0, 59}, {0, 61}, {0, 67}, {0, 71}, {0, 73}, {0, 79}, {0, 83}, {0, 
+      89}, {0, 97}}]}, {
+     PointSize[Large], 
+     RGBColor[1, 0, 0], 
+     PointBox[{0, 1}]}},
+  Frame->{{False, False}, {False, False}},
+  FrameLabel->{{None, None}, {None, None}},
+  FrameTicks->{{Automatic, 
+     Charting`ScaledFrameTicks[{Identity, Identity}]}, {Automatic, 
+     Charting`ScaledFrameTicks[{Identity, Identity}]}},
+  GridLines->{None, None},
+  GridLinesStyle->Directive[
+    GrayLevel[0.5, 0.4]],
+  ImagePadding->All,
+  Method->{
+   "DefaultBoundaryStyle" -> Automatic, "DefaultMeshStyle" -> 
+    AbsolutePointSize[6], "ScalingFunctions" -> None, 
+    "CoordinatesToolOptions" -> {"DisplayFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& ), "CopiedValueFunction" -> ({
+        (Identity[#]& )[
+         Part[#, 1]], 
+        (Identity[#]& )[
+         Part[#, 2]]}& )}},
+  PlotRange->{{-5, 5}, {0., 24.999997959183716`}},
+  PlotRangeClipping->True,
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.05], 
+     Scaled[0.05]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{
+  3.7111932888045235`*^9},ExpressionUUID->"01e3a6a9-5314-45eb-af62-\
+fd5a8237fed6"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]]
+},
+WindowSize->{958, 988},
+WindowMargins->{{Automatic, -7}, {Automatic, 0}},
+PrintingPageRange->{Automatic, Automatic},
+PrintingOptions->{"Magnification"->1.,
+"PaperOrientation"->"Portrait",
+"PaperSize"->{611.28, 789.57},
+"PostScriptOutputFile"->"/home/reinh/enseignement/lc209/2009/2e/lc209_cours_\
+et_exercices_tp1.pdf"},
+ShowSelection->True,
+TaggingRules->{"SearchTextTranslated" -> ""},
+Magnification->1.25,
+FrontEndVersion->"11.1 for Microsoft Windows (64-bit) (April 18, 2017)",
+StyleDefinitions->FrontEnd`FileName[{"Report"}, "StandardReport.nb", 
+  CharacterEncoding -> "UTF-8"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 362, 6, 126, "Title", "ExpressionUUID" -> \
+"c9856f02-b49c-4416-a4e4-77b6193dd68b"],
+Cell[932, 30, 331, 6, 45, "Subtitle", "ExpressionUUID" -> \
+"cd5d16c5-305e-40fe-8093-0b8e3078a802"],
+Cell[1266, 38, 424, 7, 42, "Subsubtitle", "ExpressionUUID" -> \
+"5f8e7112-dea2-4e02-af04-042a986398c9"],
+Cell[CellGroupData[{
+Cell[1715, 49, 297, 5, 90, "Section", "ExpressionUUID" -> \
+"825b9d74-7d01-4e3f-b1f4-13fe985a8c1d"],
+Cell[2015, 56, 857, 17, 64, "Text", "ExpressionUUID" -> \
+"2ddc9d41-aa5c-4d5d-b452-4668068597fc"],
+Cell[CellGroupData[{
+Cell[2897, 77, 425, 8, 44, "Subsection", "ExpressionUUID" -> \
+"b3ddc8b6-cfdd-4d24-ae28-f171db046d27"],
+Cell[3325, 87, 1299, 17, 39, "Text", "ExpressionUUID" -> \
+"b5f1490e-53f5-4bfc-8ecf-55cf7f0f76db"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[4661, 109, 479, 10, 79, "Subsection", "ExpressionUUID" -> \
+"44ec943c-544b-4d5a-a8e7-10666b8a473a"],
+Cell[5143, 121, 1799, 28, 89, "Text", "ExpressionUUID" -> \
+"afaae3a9-fd05-4e21-8f7b-3159c6f10498"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[6979, 154, 582, 10, 79, "Subsection", "ExpressionUUID" -> \
+"e00f2ced-fb6c-447a-9bf1-674deed37756"],
+Cell[7564, 166, 1569, 21, 39, "Text", "ExpressionUUID" -> \
+"6423d8b5-a65c-45c5-9aad-9a11c0d6b6aa"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[9170, 192, 427, 6, 43, "Subsection", "ExpressionUUID" -> \
+"163cefc4-dc63-4099-be37-7caaa36c97bb"],
+Cell[9600, 200, 1568, 21, 39, "Text", "ExpressionUUID" -> \
+"88f9d581-d410-480a-bbbf-37d978458550"]
+}, Closed]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11217, 227, 379, 7, 90, "Section", "ExpressionUUID" -> \
+"404cf756-40f0-4beb-82da-d8018f087ef7"],
+Cell[CellGroupData[{
+Cell[11621, 238, 2269, 74, 297, "Input", "ExpressionUUID" -> \
+"948ef1e6-a65e-4006-ad4d-6dfe8d2a9270"],
+Cell[13893, 314, 30885, 733, 314, "Output", "ExpressionUUID" -> \
+"01e3a6a9-5314-45eb-af62-fd5a8237fed6"]
+}, Open  ]]
+}, Closed]]
+}, Open  ]]
+}
+]
+*)
+
